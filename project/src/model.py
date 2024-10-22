@@ -25,10 +25,7 @@ class Model:
     @classmethod
     def predict(
         cls, session: rt.InferenceSession, review: str
-    ) -> dict[
-        int,
-        float,
-    ]:
+    ) -> dict[int, float,]:
         input_name = session.get_inputs()[0].name
         _, probas = session.run(None, {input_name: np.array([[review]])})
         return probas[0]
