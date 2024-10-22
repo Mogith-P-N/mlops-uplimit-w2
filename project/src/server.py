@@ -31,6 +31,7 @@ class APIIngress:
         result = await self.handle.predict.remote(request.review)
         return SimpleModelResponse.model_validate(result.model_dump())
 
+
 @serve.deployment(
     ray_actor_options={"num_cpus": 0.2},
     autoscaling_config={"min_replicas": 1, "max_replicas": 2},
